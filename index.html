@@ -22,7 +22,7 @@
             --light: #FFFFFF;        
             --text-secondary: #c0c0c0; 
             --border: rgba(255, 255, 255, 0.15); 
-           
+            
         }
 
         body {
@@ -344,16 +344,6 @@
             position: relative;
         }
 
-        .section-number {
-            font-size: 10em;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.03);
-            position: absolute;
-            top: -80px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: -1;
-        }
 
         h2 {
             font-size: 3.2em;
@@ -418,17 +408,16 @@
         }
 
         .card-icon {
-            font-size: 4em;
-            margin-bottom: 25px;
             display: block;
-            filter: drop-shadow(0 5px 15px rgba(102, 126, 234, 0.5));
-            
-            /* === COLOR-FIX === */
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            /* === END-FIX === */
+            text-align: center; 
+        }
+        
+        .card-icon img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            /* filter: invert(1); */ 
         }
 
         .card-3d h3 {
@@ -457,6 +446,13 @@
             overflow: hidden;
             position: relative;
             transition: all 0.5s;
+            display: flex;
+            align-items: center;
+            gap: 30px; 
+        }
+        
+        .project-showcase:nth-child(even) {
+            flex-direction: row-reverse;
         }
 
         .project-showcase:hover {
@@ -468,6 +464,25 @@
             padding: 50px;
             position: relative;
             z-index: 2;
+            flex: 1.5; 
+        }
+        
+        .project-image {
+            flex: 1; 
+            padding: 40px;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            max-height: 350px; 
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
 
         .project-year-badge {
@@ -541,21 +556,6 @@
         .project-link-btn:hover {
             gap: 20px;
             color: var(--accent);
-        }
-
-        .project-bg {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(102, 126, 234, 0.15), transparent);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .project-showcase:hover .project-bg {
-            opacity: 1;
         }
 
         /* Timeline */
@@ -644,18 +644,16 @@
         }
 
         .activity-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
             display: block;
-            position: relative;
-            z-index: 1;
+            text-align: center;
+        }
 
-            /* === COLOR-FIX === */
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            /* === END-FIX === */
+        .activity-icon img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 20px;
+            object-fit: contain;
+            /* filter: invert(1); */
         }
 
         .activity-card h4 {
@@ -782,7 +780,6 @@
                 font-size: 0.9em;
             }
             .cta-buttons { flex-direction: column; }
-            .section-number { font-size: 6em; top: -50px; }
             .card-3d, .project-showcase, .timeline-item {
                 padding: 30px;
             }
@@ -800,6 +797,21 @@
             .timeline-item p {
                 font-size: 1em;
             }
+            
+            /* === PROJECT MOBILE FIX === */
+            .project-showcase {
+                flex-direction: column; /* Mobile වලදී උඩ යට stack කිරීම */
+            }
+            .project-showcase:nth-child(even) {
+                flex-direction: column; /* Mobile වලදීත් උඩ යට stack කිරීම */
+            }
+            .project-content {
+                padding: 30px;
+            }
+            .project-image {
+                padding: 0 30px 30px 30px; /* Mobile වලදී image එකට padding ගැලපීම */
+            }
+            /* === END-FIX === */
         }
 
         /* Loading Animation */
@@ -877,7 +889,7 @@
                 </div>
 
                 <div class="contact-grid">
-                    <a  class="contact-pill">📞 +94 76 942 7719</a>
+                    <a href="tel:+94769427719" class="contact-pill">📞 +94 76 942 7719</a>
                     <a href="mailto:nishakamahesh2020@gmail.com?subject=Portfolio%20Inquiry:%20Let's%20Connect" class="contact-pill">✉️ Email</a>
                     <a href="https://www.linkedin.com/in/nishaka-mahesh-61255534b/" target="_blank" class="contact-pill">💼 LinkedIn</a>
                     <a href="https://github.com/UHDNMJayalath" target="_blank" class="contact-pill">💻 GitHub</a>
@@ -889,28 +901,28 @@
 
         <section id="skills">
             <div class="section-header">
-               
+                
                 <h2>Technical Arsenal</h2>
                 <p class="section-subtitle">Cutting-edge technologies and tools I work with</p>
             </div>
             <div class="card-grid">
                 <div class="card-3d">
                     <span class="card-icon">
-                      <img src="images/programming.png">
+                        <img src="images/programming.png" alt="Programming Icon">
                     </span>
                     <h3>Programming Languages</h3>
                     <p>Java • Python • R • JavaScript • HTML5 • CSS3</p>
                 </div>
                 <div class="card-3d">
                     <span class="card-icon">
-                      <img src="images/web-development.png">
+                        <img src="images/web-development.png" alt="Web Development Icon">
                     </span>
                     <h3>Web Development</h3>
                     <p>React.js • Spring Boot • MySQL • Thymeleaf • RESTful APIs</p>
                 </div>
                 <div class="card-3d">
                     <span class="card-icon">
-                      <img src="images/tools.png">
+                        <img src="images/tools.png" alt="Tools Icon">
                     </span>
                     <h3>Tools & Platforms</h3>
                     <p>Git • IntelliJ IDEA • VS Code • Postman • Power BI • DAX • Arduino</p>
@@ -919,7 +931,7 @@
         </section>
         <section id="soft-skills">
             <div class="section-header">
-               
+                
                 <h2>Core Competencies</h2>
                 <p class="section-subtitle">Essential skills that drive success</p>
             </div>
@@ -939,8 +951,8 @@
                 <p class="section-subtitle">Innovative solutions and creative implementations</p>
             </div>
             <div class="projects-container">
+
                 <div class="project-showcase">
-                    <div class="project-bg"></div>
                     <div class="project-content">
                         <span class="project-year-badge">2025</span>
                         <h3>Sentiment Analysis Engine</h3>
@@ -956,10 +968,13 @@
                             Explore Project →
                         </a>
                     </div>
+                    
+                    <div class="project-image">
+                        <img src="images/ml.png" alt="Sentiment Analysis Project Preview">
+                    </div>
                 </div>
 
                 <div class="project-showcase">
-                    <div class="project-bg"></div>
                     <div class="project-content">
                         <span class="project-year-badge">2025</span>
                         <h3>Sales Performance Dashboard | Power BI</h3>
@@ -975,10 +990,13 @@
                             View Dashboard →
                         </a>
                     </div>
+
+                    <div class="project-image">
+                        <img src="images/PowerBI.png" alt="Sales Dashboard Preview">
+                    </div>
                 </div>
 
                 <div class="project-showcase">
-                    <div class="project-bg"></div>
                     <div class="project-content">
                         <span class="project-year-badge">2024</span>
                         <h3>Hostel Management System</h3>
@@ -991,17 +1009,19 @@
                             <span class="tech-tag">Java</span>
                         </div>
 
-                        <a href="https://www.thecn.com/content/view/681880d3da45ba703707b4f5" 
+                        <a href="https://www.thecn.com/content/view/681880d3da45ba703707b4f5" target="_blank" class="project-link-btn" style="margin-bottom: 20px;">
                             Explore Project →
-                        
-                        style="display: inline-block; margin-top: 20px; padding: 10px 25px; background: rgba(255, 193, 7, 0.2); border-radius: 25px; color: #ffc107; font-weight: 600;">⚡ In Active Development
-
                         </a>
+                        <span style="display: inline-block; padding: 10px 25px; background: rgba(255, 193, 7, 0.2); border-radius: 25px; color: #ffc107; font-weight: 600;">⚡ In Active Development</span>
+                   
+                    </div>
+                    
+                    <div class="project-image">
+                        <img src="images/hms.png" alt="Hostel Management System Preview">
                     </div>
                 </div>
 
                 <div class="project-showcase">
-                    <div class="project-bg"></div>
                     <div class="project-content">
                         <span class="project-year-badge">2024</span>
                         <h3>Arduino CNC Plotter</h3>
@@ -1016,6 +1036,10 @@
                         <a href="https://sites.google.com/sci.pdn.ac.lk/group8" target="_blank" class="project-link-btn">
                             Explore Project →
                         </a>
+                    </div>
+                    
+                    <div class="project-image">
+                        <img src="images/cnc.jpg" alt="CNC Plotter Preview">
                     </div>
                 </div>
             </div>
@@ -1039,7 +1063,7 @@
                     <p><strong>University of Peradeniya</strong></p>
                     <p>Dept. of Computer Engineering & Physics Alumni Association</p>
                     <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_python-programming-certification-activity-7345467667320872960-32gt?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFuGZAMBZTuhUgxUFSpGE6Vek1JaEMt5BnE" target="_blank" class="project-link-btn">
-                            certificate →
+                        certificate →
                     </a>
                 </div>
 
@@ -1048,7 +1072,7 @@
                     <p><strong>University of Moratuwa</strong></p>
                     <p>open.uom.lk - Online Learning Platform</p>
                     <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-python-for-beginners-course-activity-7345466069974761472-19AD?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFuGZAMBZTuhUgxUFSpGE6Vek1JaEMt5BnE" target="_blank" class="project-link-btn">
-                            certificate →
+                        certificate →
                     </a>
                 </div>
 
@@ -1057,39 +1081,39 @@
                     <p><strong>University of Moratuwa</strong></p>
                     <p>open.uom.lk - Online Learning Platform</p>
                     <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-web-design-for-beginners-activity-7345465658614145025-zAW7?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFuGZAMBZTuhUgxUFSpGE6Vek1JaEMt5BnE" target="_blank" class="project-link-btn">
-                            certificate →
+                        certificate →
                     </a>
                 </div>
             </div>
         </section>
         <section id="activities">
             <div class="section-header">
-                
+               
                 <h2>Leadership & Activities</h2>
                 <p class="section-subtitle">Beyond academics - building community and character</p>
             </div>
             <div class="activities-showcase">
                 <div class="activity-card">
                     <span class="activity-icon">
-                      <img src="images/karate.png">
+                        <img src="images/karate.png" alt="Karate Icon">
                     </span>
                     <h4>University Karate Team</h4>
                 </div>
                 <div class="activity-card">
                     <span class="activity-icon">
-                      <img src="images/computer.png">
+                        <img src="images/computer.png" alt="Computer Society Icon">
                     </span>
                     <h4>Computer Society</h4>
                 </div>
                 <div class="activity-card">
                     <span class="activity-icon">
-                      <img src="images/data-science.png">
+                        <img src="images/data-science.png" alt="Data Science Icon">
                     </span>
                     <h4>Data Science Society</h4>
                 </div>
                 <div class="activity-card">
                     <span class="activity-icon">
-                      <img src="images/statistics.png">
+                        <img src="images/statistics.png" alt="Statistics Circle Icon">
                     </span>
                     <h4>Statistics Circle</h4>
                 </div>
