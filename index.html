@@ -579,17 +579,20 @@
             backdrop-filter: blur(20px);
             border: 1px solid var(--border); 
             border-radius: 20px;
-            padding: 35px;
+            padding: 30px;
             margin-bottom: 30px;
             position: relative;
             transition: all 0.4s;
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
             left: -57px;
-            top: 35px;
+            top: 55px;
             width: 20px;
             height: 20px;
             background: var(--primary);
@@ -603,6 +606,46 @@
             transform: translateY(-10px);
             border-color: var(--primary);
             box-shadow: 0 15px 50px rgba(102, 126, 234, 0.3);
+        }
+
+        /* === UPDATED LOGO STYLE (Transparent/Glassy) === */
+        .edu-logo {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            border-radius: 50%;
+            
+            /* Glass Effect Background - No Solid White */
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px; /* Padding for floating effect */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .edu-logo:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .edu-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Note: Ensure your logo images are transparent PNGs for best results */
+        }
+        /* ================================= */
+
+        .timeline-content {
+            flex: 1;
         }
 
         .timeline-item h3 {
@@ -800,18 +843,37 @@
             
             /* === PROJECT MOBILE FIX === */
             .project-showcase {
-                flex-direction: column; /* Mobile වලදී උඩ යට stack කිරීම */
+                flex-direction: column; 
             }
             .project-showcase:nth-child(even) {
-                flex-direction: column; /* Mobile වලදීත් උඩ යට stack කිරීම */
+                flex-direction: column; 
             }
             .project-content {
                 padding: 30px;
             }
             .project-image {
-                padding: 0 30px 30px 30px; /* Mobile වලදී image එකට padding ගැලපීම */
+                padding: 0 30px 30px 30px; 
             }
-            /* === END-FIX === */
+
+            /* === EDUCATION LOGO MOBILE FIX === */
+            .timeline-item {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                align-items: center;
+            }
+            .edu-logo {
+                width: 60px;
+                height: 60px;
+                min-width: 60px;
+            }
+            .timeline-item::before {
+                left: -60px; 
+                top: 60px;
+            }
+            .timeline {
+                 padding-left: 60px;
+            }
         }
 
         /* Loading Animation */
@@ -1044,69 +1106,100 @@
                 </div>
             </div>
         </section>
+        
         <section id="education">
             <div class="section-header">
-                
                 <h2>Education & Certifications</h2>
                 <p class="section-subtitle">Academic journey and continuous learning</p>
             </div>
             <div class="timeline">
+                
                 <div class="timeline-item">
-                    <h3>Bachelor of Science (Reading)</h3>
-                    <p><strong>University of Peradeniya - Faculty of Science</strong></p>
-                    <p>Triple Major: Computer Science • Statistics • Mathematics</p>
-                    <p style="margin-top: 10px; color: var(--primary);">Building a strong foundation in computational thinking and data analysis</p>
+                    <div class="edu-logo">
+                        <img src="images/UniversityLogo.png" alt="UoP Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Science (Reading)</h3>
+                        <p><strong>University of Peradeniya - Faculty of Science</strong></p>
+                        <p>Triple Major: Computer Science • Statistics • Mathematics</p>
+                        <p style="margin-top: 10px; color: var(--primary);">Building a strong foundation in computational thinking and data analysis</p>
+                    </div>
                 </div>
 
                 <div class="timeline-item">
-                    <h3>Introductory Computer Programming (Python)</h3>
-                    <p><strong>University of Peradeniya</strong></p>
-                    <p>Dept. of Computer Engineering & Physics Alumni Association</p>
-                    <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_python-programming-certification-activity-7345467667320872960-32gt?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFuGZAMBZTuhUgxUFSpGE6Vek1JaEMt5BnE" target="_blank" class="project-link-btn">
-                        certificate →
-                    </a>
+                    <div class="edu-logo">
+                        <img src="images/python.png" alt="UoP Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Introductory Computer Programming (Python)</h3>
+                        <p><strong>University of Peradeniya</strong></p>
+                        <p>Dept. of Computer Engineering & Physics Alumni Association</p>
+                        <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_python-programming-certification-activity-7345467667320872960-32gt?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFuGZAMBZTuhUgxUFSpGE6Vek1JaEMt5BnE" target="_blank" class="project-link-btn">
+                            certificate →
+                        </a>
+                    </div>
                 </div>
 
                 <div class="timeline-item">
-                    <h3>Generative AI Fundamentals</h3>
-                    <p><strong>Databricks Academy</strong></p>
-                    <p style="margin-top: 5px; color: #a0a0a0; font-size: 0.9em;">Issued Nov 2025</p>
-                    <p>Validated understanding of Generative AI concepts, Large Language Models (LLMs), and their applications in enterprise data solutions.</p>
-                    <a href="https://credentials.databricks.com/64ca75f3-b81b-40a0-b4a8-aaf1c7c05b06#acc.KDYeRqE1" target="_blank" class="project-link-btn">
-                        certificate →
-                    </a>
+                    <div class="edu-logo">
+                        <img src="images/GenAI.png" alt="Databricks Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Generative AI Fundamentals</h3>
+                        <p><strong>Databricks Academy</strong></p>
+                        <p style="margin-top: 5px; color: #a0a0a0; font-size: 0.9em;">Issued Nov 2025</p>
+                        <p>Validated understanding of Generative AI concepts, Large Language Models (LLMs), and their applications in enterprise data solutions.</p>
+                        <a href="https://credentials.databricks.com/64ca75f3-b81b-40a0-b4a8-aaf1c7c05b06#acc.KDYeRqE1" target="_blank" class="project-link-btn">
+                            certificate →
+                        </a>
+                    </div>
                 </div>
 
                 <div class="timeline-item">
-                    <h3>Databricks Fundamentals</h3>
-                    <p><strong>Databricks Academy</strong></p>
-                    <p style="margin-top: 5px; color: #a0a0a0; font-size: 0.9em;">Issued Nov 2025</p>
-                    <p>Comprehensive foundation in the Databricks Lakehouse Platform, covering data engineering, SQL analysis, and collaborative data science workflows.</p>
-                    <a href="https://credentials.databricks.com/e2d539bf-9051-4163-9cff-62b8affad694#acc.JO95qhct" target="_blank" class="project-link-btn">
-                        certificate →
-                    </a>
-                </div>
-
-
-                <div class="timeline-item">
-                    <h3>Python for Beginners</h3>
-                    <p><strong>University of Moratuwa</strong></p>
-                    <p>open.uom.lk - Online Learning Platform</p>
-                    <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-python-for-beginners-course-activity-7345466069974761472-19AD?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFuGZAMBZTuhUgxUFSpGE6Vek1JaEMt5BnE" target="_blank" class="project-link-btn">
-                        certificate →
-                    </a>
+                    <div class="edu-logo">
+                        <img src="images/DataBricks.png" alt="Databricks Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Databricks Fundamentals</h3>
+                        <p><strong>Databricks Academy</strong></p>
+                        <p style="margin-top: 5px; color: #a0a0a0; font-size: 0.9em;">Issued Nov 2025</p>
+                        <p>Comprehensive foundation in the Databricks Lakehouse Platform, covering data engineering, SQL analysis, and collaborative data science workflows.</p>
+                        <a href="https://credentials.databricks.com/e2d539bf-9051-4163-9cff-62b8affad694#acc.JO95qhct" target="_blank" class="project-link-btn">
+                            certificate →
+                        </a>
+                    </div>
                 </div>
 
                 <div class="timeline-item">
-                    <h3>Web Design for Beginners</h3>
-                    <p><strong>University of Moratuwa</strong></p>
-                    <p>open.uom.lk - Online Learning Platform</p>
-                    <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-web-design-for-beginners-activity-7345465658614145025-zAW7?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFuGZAMBZTuhUgxUFSpGE6Vek1JaEMt5BnE" target="_blank" class="project-link-btn">
-                        certificate →
-                    </a>
+                    <div class="edu-logo">
+                        <img src="images/python.png" alt="UoM Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Python for Beginners</h3>
+                        <p><strong>University of Moratuwa</strong></p>
+                        <p>open.uom.lk - Online Learning Platform</p>
+                        <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-python-for-beginners-course-activity-7345466069974761472-19AD?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFuGZAMBZTuhUgxUFSpGE6Vek1JaEMt5BnE" target="_blank" class="project-link-btn">
+                            certificate →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="edu-logo">
+                        <img src="images/Web.png" alt="UoM Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Web Design for Beginners</h3>
+                        <p><strong>University of Moratuwa</strong></p>
+                        <p>open.uom.lk - Online Learning Platform</p>
+                        <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-web-design-for-beginners-activity-7345465658614145025-zAW7?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFuGZAMBZTuhUgxUFSpGE6Vek1JaEMt5BnE" target="_blank" class="project-link-btn">
+                            certificate →
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
+
         <section id="activities">
             <div class="section-header">
                
