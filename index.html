@@ -212,10 +212,11 @@
         .hero-description {
             font-size: 1.1em;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 950px;
             margin: 0 auto 30px;
             line-height: 1.7;
             padding: 0 15px;
+            text-align: justify;
         }
 
         .cta-buttons {
@@ -334,9 +335,11 @@
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr); 
             gap: 25px;
             padding: 0 15px;
+            max-width: 900px; 
+            margin: 0 auto;
         }
 
         .card-3d {
@@ -435,48 +438,6 @@
         .projects-scroll-container {
             position: relative;
             padding: 0 15px;
-        }
-
-        .scroll-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .scroll-btn:hover {
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
-        }
-
-        .scroll-btn:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-
-        .scroll-btn-left {
-            left: -10px;
-        }
-
-        .scroll-btn-right {
-            right: -10px;
-        }
-
-        .scroll-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
         }
 
         .projects-scroll-wrapper {
@@ -625,8 +586,8 @@
             font-weight: 600;
             font-size: 0.95em;
             margin-top: auto;
-            transition: all 0.3s;
             padding: 10px 0;
+            transition: all 0.3s;
         }
 
         .project-link-btn:hover {
@@ -634,40 +595,44 @@
             color: var(--accent);
         }
 
-        /* SCROLLABLE TIMELINE/EDUCATION SECTION */
+
+        /* ========================================================= */
+        /* PERFECT 8-CARD (4x2) TIMELINE SLIDER FIX                  */
+        /* ========================================================= */
         .timeline-scroll-container {
-            position: relative;
+            width: 100%;
+            max-width: 1150px; /* Provides enough space for 4 columns */
+            margin: 0 auto;
             padding: 0 15px;
         }
 
         .timeline-scroll-wrapper {
             display: flex;
-            gap: 20px;
+            gap: 40px; /* Spacing between the big 8-card slides */
             overflow-x: auto;
             scroll-behavior: smooth;
-            padding: 20px 5px;
+            padding: 20px 5px 40px 5px; 
             scroll-snap-type: x mandatory;
             scrollbar-width: thin;
             scrollbar-color: var(--primary) var(--surface);
             -webkit-overflow-scrolling: touch;
         }
 
-        .timeline-scroll-wrapper::-webkit-scrollbar {
-            height: 8px;
-        }
+        .timeline-scroll-wrapper::-webkit-scrollbar { height: 8px; }
+        .timeline-scroll-wrapper::-webkit-scrollbar-track { background: var(--surface); border-radius: 10px; }
+        .timeline-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        .timeline-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
 
-        .timeline-scroll-wrapper::-webkit-scrollbar-track {
-            background: var(--surface);
-            border-radius: 10px;
-        }
-
-        .timeline-scroll-wrapper::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
-        }
-
-        .timeline-scroll-wrapper::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary);
+        /* The Slide Wrapper - holds exactly 8 cards (4 columns x 2 rows) */
+        .cert-slide {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px; /* Space between rows and columns inside the slide */
+            flex-shrink: 0;
+            width: 100%; 
+            min-width: 100%; 
+            scroll-snap-align: center; /* Snaps the whole 8-card block */
+            align-content: start;
         }
 
         .timeline-card {
@@ -676,8 +641,7 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 25px;
-            min-width: 320px;
-            max-width: 320px;
+            width: 100%; /* Take full width of the grid cell */
             flex-shrink: 0;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
@@ -685,9 +649,10 @@
             gap: 20px;
             align-items: center;
             text-align: center;
-            scroll-snap-align: start;
+            scroll-snap-align: none; /* Let parent slide handle snapping */
             opacity: 0;
             transform: scale(0.95);
+            position: relative;
         }
 
         .timeline-card.visible {
@@ -700,6 +665,22 @@
             border-color: var(--primary);
             box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
             z-index: 10;
+        }
+
+        /* Highlighted Degree Card */
+        .edu-highlight {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
+        .edu-highlight .timeline-card {
+            width: 100%;
+            min-width: 350px;
+            max-width: 450px;
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
         }
 
         .edu-logo-compact {
@@ -735,7 +716,7 @@
         }
 
         .timeline-card h3 {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: var(--light);
             margin-bottom: 8px;
             line-height: 1.4;
@@ -757,14 +738,88 @@
             font-weight: 600;
             font-size: 0.9em;
             transition: all 0.3s;
-            margin-top: 5px;
+            margin-top: auto;
         }
 
         .certificate-btn:hover {
             gap: 10px;
             color: var(--accent);
         }
+        
+        .cert-year {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.75em;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            z-index: 5;
+        }
 
+        /* Experience Section Adjustments */
+        .experience-card {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            margin: 0 auto;
+            max-width: 900px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .experience-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .experience-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .experience-card h3 {
+            color: var(--primary);
+            font-size: 1.6em;
+            margin-bottom: 5px;
+        }
+
+        .experience-card h4 {
+            color: var(--light);
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .experience-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .experience-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 1em;
+        }
+
+        .experience-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        /* Activities Section */
         .activities-showcase {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -817,6 +872,7 @@
             z-index: 1;
         }
 
+        /* Footer */
         footer {
             text-align: center;
             padding: 60px 20px;
@@ -859,6 +915,7 @@
             margin: 20px 0;
         }
 
+        /* Loader */
         .loader {
             position: fixed;
             top: 0;
@@ -891,169 +948,91 @@
             to { transform: rotate(360deg); }
         }
 
-        /* MOBILE RESPONSIVENESS */
+        /* ========================================================= */
+        /* RESPONSIVE DESIGN FIXES */
+        /* ========================================================= */
+        
+        /* Mobile & Tablet adjustments for 8-card slider */
+        @media (max-width: 1150px) {
+            .cert-slide { 
+                display: contents; /* Break the grid, making cards direct children of flex wrapper */
+            }
+            .timeline-card { 
+                min-width: 280px; /* Fixed width for mobile scrolling */
+                max-width: 280px; 
+                scroll-snap-align: center; /* Snap one by one */
+            }
+            .edu-highlight .timeline-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .container { padding: 25px; }
+            h1 { font-size: 2.8em; }
+            h2 { font-size: 2.2em; }
+        }
+
         @media (max-width: 768px) {
-            body {
-                font-size: 15px;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
+            body { font-size: 15px; }
+            .container { padding: 15px; }
             nav {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-                padding: 10px 15px;
-                border-radius: 15px;
-                gap: 10px;
-                max-width: calc(100% - 20px);
-                overflow-x: auto;
-                white-space: nowrap;
-                justify-content: flex-start;
+                top: 10px; right: 10px; left: 10px;
+                padding: 10px 15px; border-radius: 15px; gap: 10px;
+                max-width: calc(100% - 20px); overflow-x: auto;
+                white-space: nowrap; justify-content: flex-start;
             }
-
-            nav a {
-                font-size: 0.85em;
-                padding: 8px 12px;
+            nav a { font-size: 0.85em; padding: 8px 12px; }
+            header { padding: 70px 15px 30px; min-height: 90vh; }
+            h1 { font-size: 2.2em; padding: 0 10px; }
+            .profile-container { width: 180px; height: 180px; margin-bottom: 25px; }
+            .typing-container { font-size: 1.2em; min-height: 40px; margin: 15px 0; }
+            .hero-description { font-size: 1em; padding: 0 10px; margin-bottom: 25px; }
+            .cta-buttons { flex-direction: column; gap: 12px; padding: 0 10px; margin-bottom: 30px; }
+            .cta-btn { width: 100%; max-width: 280px; margin: 0 auto; padding: 12px 25px; }
+            .contact-grid { flex-direction: column; align-items: center; gap: 10px; padding: 0 10px; }
+            .contact-pill { width: 100%; max-width: 280px; padding: 12px 20px; font-size: 0.9em; }
+            section { margin-bottom: 60px; padding-top: 30px; }
+            .section-header { margin-bottom: 35px; }
+            h2 { font-size: 1.8em; margin-bottom: 12px; }
+            .section-subtitle { font-size: 0.95em; }
+            .card-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 10px; }
+            .card-3d { padding: 25px 20px; border-radius: 15px; }
+            .card-icon img { width: 45px; height: 45px; margin-bottom: 15px; }
+            .card-3d h3 { font-size: 1.3em; }
+            .card-3d p { font-size: 0.95em; }
+            .skills-showcase { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 10px; }
+            .skill-pill { padding: 12px 15px; font-size: 0.9em; min-height: 44px; }
+            .project-card { min-width: 260px; max-width: 260px; }
+            
+            /* Responsive timeline cards for small mobile */
+            .timeline-card { 
+                min-width: 260px; 
+                max-width: 260px; 
             }
-
-            header {
-                padding: 70px 15px 30px;
-                min-height: 90vh;
-            }
-
-            h1 {
-                font-size: 2.2em;
-                padding: 0 10px;
-            }
-
-            .profile-container {
-                width: 180px;
-                height: 180px;
-                margin-bottom: 25px;
-            }
-
-            .typing-container {
-                font-size: 1.2em;
-                min-height: 40px;
-                margin: 15px 0;
-            }
-
-            .hero-description {
-                font-size: 1em;
-                padding: 0 10px;
-                margin-bottom: 25px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                gap: 12px;
-                padding: 0 10px;
-                margin-bottom: 30px;
-            }
-
-            .cta-btn {
+            .edu-highlight .timeline-card {
                 width: 100%;
-                max-width: 280px;
-                margin: 0 auto;
-                padding: 12px 25px;
-            }
-
-            .contact-grid {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                padding: 0 10px;
-            }
-
-            .contact-pill {
-                width: 100%;
-                max-width: 280px;
-                padding: 12px 20px;
-                font-size: 0.9em;
-            }
-
-            section {
-                margin-bottom: 60px;
-                padding-top: 30px;
-            }
-
-            .section-header {
-                margin-bottom: 35px;
-            }
-
-            h2 {
-                font-size: 1.8em;
-                margin-bottom: 12px;
-            }
-
-            .section-subtitle {
-                font-size: 0.95em;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 0 10px;
-            }
-
-            .card-3d {
-                padding: 25px 20px;
-                border-radius: 15px;
-            }
-
-            .card-icon img {
-                width: 45px;
-                height: 45px;
-                margin-bottom: 15px;
-            }
-
-            .card-3d h3 {
-                font-size: 1.3em;
-            }
-
-            .card-3d p {
-                font-size: 0.95em;
-            }
-
-            .skills-showcase {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                padding: 0 10px;
-            }
-
-            .skill-pill {
-                padding: 12px 15px;
-                font-size: 0.9em;
-                min-height: 44px;
-            }
-
-            .project-card {
-                min-width: 260px;
-                max-width: 260px;
-            }
-
-            .timeline-card {
-                min-width: 240px;
-                max-width: 240px;
+                max-width: 100%;
             }
         }
 
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .container {
-                padding: 25px;
-            }
-            
-            h1 {
-                font-size: 2.8em;
-            }
-            
-            h2 {
-                font-size: 2.2em;
-            }
+       /* Experience Logo - Final Clean Fix */
+        .exp-logo-container {
+            display: flex !important;
+            justify-content: center !important;
+            margin-bottom: 20px !important;
+            width: 100% !important;
         }
+
+        .exp-logo {
+            width: 130px !important; /* මේ සයිස් එක දැන් අනිවාර්යයෙන්ම වැඩ කරනවා */
+            height: auto !important;
+            object-fit: contain !important;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2)) !important;
+            display: block !important;
+        }
+
     </style>
 </head>
 <body>
@@ -1065,6 +1044,7 @@
 
     <nav>
         <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
         <a href="#activities">Activities</a>
@@ -1086,14 +1066,18 @@
                     <span class="typing-text" id="typingText"></span>
                 </div>
 
-                <p class="hero-description">
-                    Third-year BSc undergraduate specializing in Computer Science, Statistics, and Mathematics. 
-                    Building intelligent solutions at the intersection of software engineering and data science.
+                <p class="hero-description" >
+                    Recent BSc Graduate from the University of Peradeniya specializing in Computer Science, Mathematics, and Statistics. Experienced in Java, Python, and Power BI, currently applying these skills as an Industrial Engineering Intern at Ansell. Seeking a challenging opportunity to contribute to Software Engineering, Data Science, and Data Analysis tasks in an industrial environment.
                 </p>
 
                 <div class="cta-buttons">
-                    <a href="#projects" class="cta-btn cta-primary">View My Work</a>
-                    <a href="mailto:nishakamahesh2020@gmail.com?subject=Portfolio Inquiry" class="cta-btn cta-secondary">Get In Touch</a>
+                <a href="#projects" class="cta-btn cta-primary">View My Work</a>
+                
+                <a href="Nishaka_Jayalath_CV.pdf" download="Nishaka_Mahesh_Jayalath_CV" class="cta-btn cta-secondary">
+                    Download CV 📥
+                </a>
+
+                <a href="mailto:nishakamahesh2020@gmail.com" class="cta-btn cta-secondary">Get In Touch</a>
                 </div>
 
                 <div class="contact-grid">
@@ -1117,21 +1101,31 @@
                         <img src="images/programming.png" alt="Programming Icon">
                     </span>
                     <h3>Programming Languages</h3>
-                    <p>Java • Python • R • JavaScript • HTML5 • CSS3</p>
+                    <p>Java • Python • SQL • R • JavaScript</p>
                 </div>
+                
+                <div class="card-3d">
+                    <span class="card-icon">
+                        <img src="images/data-science.png" alt="Data Science Icon">
+                    </span>
+                    <h3>Data Science & AI</h3>
+                    <p>Power BI • Machine Learning • Pandas • Scikit-learn • Generative AI</p>
+                </div>
+
                 <div class="card-3d">
                     <span class="card-icon">
                         <img src="images/web-development.png" alt="Web Development Icon">
                     </span>
                     <h3>Web Development</h3>
-                    <p>React.js • Spring Boot • MySQL • Thymeleaf • RESTful APIs</p>
+                    <p>React.js • Spring Boot • MySQL • HTML/CSS • REST APIs</p>
                 </div>
+
                 <div class="card-3d">
                     <span class="card-icon">
                         <img src="images/tools.png" alt="Tools Icon">
                     </span>
-                    <h3>Tools & Platforms</h3>
-                    <p>Git • IntelliJ IDEA • VS Code • Postman • Power BI • DAX • Arduino</p>
+                    <h3>Tools & Automation</h3>
+                    <p>Power Automate • MS Forms • Git • VS Code • Postman</p>
                 </div>
             </div>
         </section>
@@ -1151,6 +1145,35 @@
               <div class="skill-pill">🎯 Attention to Detail</div>
               <div class="skill-pill">🌱 Adaptability</div>
           </div>
+        </section>
+
+        <section id="experience">
+            <div class="section-header">
+                <h2>Professional Experience</h2>
+                <p class="section-subtitle">Real-world industry application and system engineering</p>
+            </div>
+            <div class="container" style="padding: 0 15px;">
+                <div class="experience-card card-3d">
+
+                     <div class="exp-logo-container">
+                         <img src="images/ansell.png" alt="ansell" class="exp-logo">
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                        <div>
+                            <h3>Industrial Engineering Intern</h3>
+                            <h4>Ansell Textiles Lanka, Seeduwa</h4>
+                        </div>
+                        <span class="project-year-badge">Jan 2026 - Present</span>
+                    </div>
+                    <ul class="experience-list">
+                        <li><strong>Conducted</strong> comprehensive capacity analysis to evaluate production capabilities and streamline manufacturing planning processes.</li>
+                        <li><strong>Designed</strong> an individual efficiency tracking system using Power BI, enabling data-driven operator development and real-time performance monitoring.</li>
+                        <li><strong>Analyzing</strong> changeover data to identify operational bottlenecks and <strong>developing</strong> a real-time tracking system to minimize machine downtime.</li>
+                        <li><strong>Maintaining</strong> Standard Minute Value (SMV) databases in Advanced Excel to ensure accurate capacity forecasting.</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section id="projects">
@@ -1221,7 +1244,7 @@
                             View Dashboard →
                         </a>
                     </div>
-                    <!-- Vehicle Speed Detection System -->
+
                     <div class="project-card">
                         <div class="project-header">
                             <h3>Vehicle Speed Detection System</h3>
@@ -1313,125 +1336,179 @@
                 <h2>Education & Certifications</h2>
                 <p class="section-subtitle">Scroll to view academic journey and achievements</p>
             </div>
-            <div class="timeline-scroll-container">
-                <div class="timeline-scroll-wrapper">
-                    <!-- University -->
-                    <div class="timeline-card">
-                        <div class="edu-logo-compact">
-                            <img src="images/UniversityLogo.png" alt="UoP Logo">
-                        </div>
-                        <div class="timeline-content-compact">
-                            <h3>Bachelor of Science (Reading)</h3>
-                            <p><strong>University of Peradeniya</strong></p>
-                            <p>Triple Major: Computer Science • Statistics • Mathematics</p>
-                        </div>
+            
+            <div class="edu-highlight">
+                <div class="timeline-card">
+                    <div class="edu-logo-compact">
+                        <img src="images/UniversityLogo.png" alt="UoP Logo">
                     </div>
-
-                    <!-- Python Programming -->
-                    <div class="timeline-card">
-                        <div class="edu-logo-compact">
-                            <img src="images/python.png" alt="Python Logo">
-                        </div>
-                        <div class="timeline-content-compact">
-                            <h3>Introductory Python</h3>
-                            <p><strong>University of Peradeniya</strong></p>
-                            <p>Dept. of Computer Engineering & Physics Alumni Association</p>
-                            <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_python-programming-certification-activity-7345467667320872960-32gt" target="_blank" class="certificate-btn">
-                                View Certificate →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Generative AI -->
-                    <div class="timeline-card">
-                        <div class="edu-logo-compact">
-                            <img src="images/GenAI.png" alt="Databricks Logo">
-                        </div>
-                        <div class="timeline-content-compact">
-                            <h3>Generative AI Fundamentals</h3>
-                            <p><strong>Databricks Academy</strong></p>
-                            <p>Understanding of Generative AI concepts and LLMs</p>
-                            <a href="https://credentials.databricks.com/64ca75f3-b81b-40a0-b4a8-aaf1c7c05b06" target="_blank" class="certificate-btn">
-                                View Certificate →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Databricks -->
-                    <div class="timeline-card">
-                        <div class="edu-logo-compact">
-                            <img src="images/DataBricks.png" alt="Databricks Logo">
-                        </div>
-                        <div class="timeline-content-compact">
-                            <h3>Databricks Fundamentals</h3>
-                            <p><strong>Databricks Academy</strong></p>
-                            <p>Databricks Lakehouse Platform foundation</p>
-                            <a href="https://credentials.databricks.com/e2d539bf-9051-4163-9cff-62b8affad694" target="_blank" class="certificate-btn">
-                                View Certificate →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Python for Beginners -->
-                    <div class="timeline-card">
-                        <div class="edu-logo-compact">
-                            <img src="images/Mora.png" alt="UoM Logo">
-                        </div>
-                        <div class="timeline-content-compact">
-                            <h3>Python for Beginners</h3>
-                            <p><strong>University of Moratuwa</strong></p>
-                            <p>open.uom.lk - Online Learning Platform</p>
-                            <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-python-for-beginners-course-activity-7345466069974761472-19AD" target="_blank" class="certificate-btn">
-                                View Certificate →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Web Design -->
-                    <div class="timeline-card">
-                        <div class="edu-logo-compact">
-                            <img src="images/Mora.png" alt="UoM Logo">
-                        </div>
-                        <div class="timeline-content-compact">
-                            <h3>Web Design for Beginners</h3>
-                            <p><strong>University of Moratuwa</strong></p>
-                            <p>open.uom.lk - Online Learning Platform</p>
-                            <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-web-design-for-beginners-activity-7345465658614145025-zAW7" target="_blank" class="certificate-btn">
-                                View Certificate →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Kaggle ML -->
-                    <div class="timeline-card">
-                        <div class="edu-logo-compact">
-                            <img src="images/kaggle_logo.png" alt="Kaggle Logo">
-                        </div>
-                        <div class="timeline-content-compact">
-                            <h3>Intro to Machine Learning</h3>
-                            <p><strong>Kaggle</strong></p>
-                            <p>Core concepts of building ML models</p>
-                            <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_nishaka-mahesh-jayalath-completed-the-intro-activity-7405669771226177536-yeAx" target="_blank" class="certificate-btn">
-                                View Certificate →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Kaggle SQL -->
-                    <div class="timeline-card">
-                        <div class="edu-logo-compact">
-                            <img src="images/kaggle_logo.png" alt="Kaggle Logo">
-                        </div>
-                        <div class="timeline-content-compact">
-                            <h3>Intro to SQL</h3>
-                            <p><strong>Kaggle</strong></p>
-                            <p>Fundamentals of querying databases</p>
-                            <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_nishaka-mahesh-jayalath-completed-the-intro-activity-7407364148046700544-f_1o" target="_blank" class="certificate-btn">
-                                View Certificate →
-                            </a>
-                        </div>
+                    <div class="timeline-content-compact">
+                        <h3 style="font-size: 1.4em;">Bachelor of Science<br>(Completed Requirements)</br>
+                        <p><strong>University of Peradeniya</strong></p>
+                        <p style="margin-top: 10px; color: var(--primary);">Triple Major: Computer Science • Statistics • Mathematics</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="timeline-scroll-container">
+                <div class="timeline-scroll-wrapper">
+
+                    <div class="cert-slide">
+                        
+                        <div class="timeline-card">
+                            <span class="cert-year">2026</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/Coursera.png" alt="Coursera Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>What is Data Science?</h3>
+                                <p><strong>IBM on Coursera</strong></p>
+                                <p>Foundations of Data Science methodology</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2026</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/Coursera.png" alt="Coursera Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Tools for Data Science</h3>
+                                <p><strong>IBM on Coursera</strong></p>
+                                <p>Jupyter, RStudio, GitHub & Watson Studio</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2026</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/microsoft.png" alt="Microsoft Logo"> 
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Career Essentials in Data Analysis</h3>
+                                <p><strong>Microsoft & LinkedIn</strong></p>
+                                <p>Data Analysis, Visualization, and Analytics</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2026</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/microsoft.png" alt="Microsoft Logo"> 
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Career Essentials in Generative AI</h3>
+                                <p><strong>Microsoft & LinkedIn</strong></p>
+                                <p>Generative AI, Microsoft Copilot, Responsible AI</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2025</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/python.png" alt="Python Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Introductory Python</h3>
+                                <p><strong>University of Peradeniya</strong></p>
+                                <p>Dept. of Computer Engineering & Physics</p>
+                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_python-programming-certification-activity-7345467667320872960-32gt" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2025</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/GenAI.png" alt="Databricks Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Generative AI Fundamentals</h3>
+                                <p><strong>Databricks Academy</strong></p>
+                                <p>Understanding of Generative AI concepts</p>
+                                <a href="https://credentials.databricks.com/64ca75f3-b81b-40a0-b4a8-aaf1c7c05b06" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2025</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/DataBricks.png" alt="Databricks Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Databricks Fundamentals</h3>
+                                <p><strong>Databricks Academy</strong></p>
+                                <p>Databricks Lakehouse Platform foundation</p>
+                                <a href="https://credentials.databricks.com/e2d539bf-9051-4163-9cff-62b8affad694" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2025</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/Mora.png" alt="UoM Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Web Design for Beginners</h3>
+                                <p><strong>University of Moratuwa</strong></p>
+                                <p>open.uom.lk - Online Learning Platform</p>
+                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-web-design-for-beginners-activity-7345465658614145025-zAW7" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+                    </div> <div class="cert-slide">
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2025</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/Mora.png" alt="UoM Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Python for Beginners</h3>
+                                <p><strong>University of Moratuwa</strong></p>
+                                <p>open.uom.lk - Online Learning Platform</p>
+                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_completed-the-python-for-beginners-course-activity-7345466069974761472-19AD?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFd35i4BsEqnQUyueUNhZeB6BzRpQDl1UHw" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2025</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/kaggle_logo.png" alt="Kaggle Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Intro to Machine Learning</h3>
+                                <p><strong>Kaggle</strong></p>
+                                <p>Core concepts of building ML models</p>
+                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_nishaka-mahesh-jayalath-completed-the-intro-activity-7405669771226177536-yeAx" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2025</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/kaggle_logo.png" alt="Kaggle Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Intro to SQL</h3>
+                                <p><strong>Kaggle</strong></p>
+                                <p>Fundamentals of querying databases</p>
+                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_nishaka-mahesh-jayalath-completed-the-intro-activity-7407364148046700544-f_1o" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+                    </div> </div>
             </div>
         </section>
 
@@ -1472,7 +1549,7 @@
             <div class="footer-content">
                 <h3>Let's Build Something Amazing</h3>
                 <p class="footer-highlight">Open for Internships & Collaborations</p>
-                <p style="margin-top: 30px; color: #505050; font-size: 0.95em;">© 2025 Nishaka Jayalath. Crafted with passion & code.</p>
+                <p style="margin-top: 30px; color: #505050; font-size: 0.95em;">© 2026 Nishaka Jayalath. Crafted with passion & code.</p>
             </div>
         </footer>
     </div>
@@ -1627,7 +1704,7 @@
         }, observerOptions);
 
         // Observe all animated elements
-        document.querySelectorAll('.card-3d, .skill-pill, .project-card, .timeline-card, .activity-card').forEach(el => {
+        document.querySelectorAll('.card-3d, .skill-pill, .project-card, .timeline-card, .activity-card, .experience-card').forEach(el => {
             scrollObserver.observe(el);
         });
 
@@ -1653,10 +1730,6 @@
                 }
             });
         });
-
-        // Auto-scroll hint for horizontal sections (optional)
-        const projectsWrapper = document.querySelector('.projects-scroll-wrapper');
-        const timelineWrapper = document.querySelector('.timeline-scroll-wrapper');
 
         // Touch/Mouse drag scrolling enhancement
         function enableDragScroll(element) {
@@ -1689,6 +1762,9 @@
                 element.scrollLeft = scrollLeft - walk;
             });
         }
+
+        const projectsWrapper = document.querySelector('.projects-scroll-wrapper');
+        const timelineWrapper = document.querySelector('.timeline-scroll-wrapper');
 
         if (projectsWrapper) {
             projectsWrapper.style.cursor = 'grab';
