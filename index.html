@@ -626,13 +626,14 @@
         /* The Slide Wrapper - holds exactly 8 cards (4 columns x 2 rows) */
         .cert-slide {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px; /* Space between rows and columns inside the slide */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             flex-shrink: 0;
             width: 100%; 
             min-width: 100%; 
-            scroll-snap-align: center; /* Snaps the whole 8-card block */
+            scroll-snap-align: center;
             align-content: start;
+
         }
 
         .timeline-card {
@@ -673,6 +674,7 @@
             justify-content: center;
             margin-bottom: 40px;
             padding: 0 15px;
+            gap: 24px;
         }
 
         .edu-highlight .timeline-card {
@@ -1067,13 +1069,13 @@
                 </div>
 
                 <p class="hero-description" >
-                    Recent BSc Graduate from the University of Peradeniya specializing in Computer Science, Mathematics, and Statistics. Experienced in Java, Python, and Power BI, currently applying these skills as an Industrial Engineering Intern at Ansell. Seeking a challenging opportunity to contribute to Software Engineering, Data Science, and Data Analysis tasks in an industrial environment.
+                    Recent BSc Graduate from the University of Peradeniya specializing in Computer Science, Mathematics, and Statistics. Completed an Industrial Engineering Internship at Ansell, applying Java, Python, and Power BI for performance tracking and operational data analysis in a manufacturing environment. Currently pursuing an MSc in Data Science and Artificial Intelligence at the University of Peradeniya,Seeking a challenging opportunity to contribute to Software Engineering, Data Science, and Data Analysis tasks in an industrial environment.
                 </p>
 
                 <div class="cta-buttons">
                 <a href="#projects" class="cta-btn cta-primary">View My Work</a>
                 
-                <a href="Nishaka_Jayalath_CV.pdf" download="Nishaka_Mahesh_Jayalath_CV" class="cta-btn cta-secondary">
+                <a href="Aspiring Data Scientist & Analyst.pdf" download="Nishaka_Mahesh_Jayalath_CV" class="cta-btn cta-secondary">
                     Download CV 📥
                 </a>
 
@@ -1164,13 +1166,15 @@
                             <h3>Industrial Engineering Intern</h3>
                             <h4>Ansell Textiles Lanka, Seeduwa</h4>
                         </div>
-                        <span class="project-year-badge">Jan 2026 - Present</span>
+                        <span class="project-year-badge">Jan 2026 - Jun 2026</span>
                     </div>
                     <ul class="experience-list">
                         <li><strong>Conducted</strong> comprehensive capacity analysis to evaluate production capabilities and streamline manufacturing planning processes.</li>
                         <li><strong>Designed</strong> an individual efficiency tracking system using Power BI, enabling data-driven operator development and real-time performance monitoring.</li>
-                        <li><strong>Analyzing</strong> changeover data to identify operational bottlenecks and <strong>developing</strong> a real-time tracking system to minimize machine downtime.</li>
-                        <li><strong>Maintaining</strong> Standard Minute Value (SMV) databases in Advanced Excel to ensure accurate capacity forecasting.</li>
+                        <li><strong>Analyzed</strong> changeover data to identify operational bottlenecks and developed a real-time tracking system to minimize machine downtime, while calculating line-wise PPH (Pieces Per Hour) to monitor production velocity.</li>
+                        <li><strong>Designed and maintained</strong> employee skill matrices to support strategic workforce allocation and line flexibility.</li>
+                        <li><strong>Maintained</strong> Standard Minute Value (SMV) databases in Advanced Excel to ensure accurate capacity forecasting and production planning visibility.</li>
+                        <li><strong>Integrated</strong> Power BI, Excel, and Power Automate workflows to build automated, data-driven tracking and reporting solutions for manufacturing performance.</li>
                     </ul>
                 </div>
             </div>
@@ -1183,6 +1187,28 @@
             </div>
             <div class="projects-scroll-container">
                 <div class="projects-scroll-wrapper">
+                    
+                    <!-- Stock Trend Prediction Dashboard -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Stock Trend Prediction Dashboard</h3>
+                            <span class="project-year-badge">2026</span>
+                        </div>
+                        <div class="project-image-compact">
+                            <img src="images/StockTrend.png" alt="Stock Trend Prediction Dashboard">
+                        </div>
+                        <p>Full-stack web app combining an LSTM neural network and Random Forest classifier to predict next-day stock price direction, with an integrated technical analysis and EDA dashboard.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">TensorFlow/Keras</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_datascience-machinelearning-python-activity-7471570343971725312-G79y?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFd35i4BsEqnQUyueUNhZeB6BzRpQDl1UHw" target="_blank" class="project-link-btn">
+                            View Project →
+                        </a>
+                    </div>
+
                     <!-- Meta Ad Dashboard -->
                     <div class="project-card">
                         <div class="project-header">
@@ -1207,7 +1233,7 @@
                     <div class="project-card">
                         <div class="project-header">
                             <h3>Hostel Management System</h3>
-                            <span class="project-year-badge">2024</span>
+                            <span class="project-year-badge">2025</span>
                         </div>
                         <div class="project-image-compact">
                             <img src="images/hms.png" alt="Hostel Management System">
@@ -1338,14 +1364,27 @@
             </div>
             
             <div class="edu-highlight">
+
                 <div class="timeline-card">
                     <div class="edu-logo-compact">
                         <img src="images/UniversityLogo.png" alt="UoP Logo">
                     </div>
                     <div class="timeline-content-compact">
-                        <h3 style="font-size: 1.4em;">Bachelor of Science<br>(Completed Requirements)</br>
+                        <h3 style="font-size: 1.4em;">MSc in Data Science and Artificial Intelligence<br>(Reading)</br>
+                        <p><strong>Postgraduate Institute of Science (PGIS), University of Peradeniya</strong></p>
+                        <p style="margin-top: 10px; color: var(--primary);">2026 – Present</p>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="edu-logo-compact">
+                        <img src="images/UniversityLogo.png" alt="UoP Logo">
+                    </div>
+                    <div class="timeline-content-compact">
+                        <h3 style="font-size: 1.4em;">Bachelor of Science<br>(Awaiting Convocation)</br>
                         <p><strong>University of Peradeniya</strong></p>
-                        <p style="margin-top: 10px; color: var(--primary);">Triple Major: Computer Science • Statistics • Mathematics</p>
+                        <p style="margin-top: 10px; color: var(--primary);">Computer Science • Statistics • Mathematics</p>
+                        <p style="margin-top: 10px; color: var(--primary);">2022 – 2026</p>
                     </div>
                 </div>
             </div>
@@ -1354,17 +1393,17 @@
                 <div class="timeline-scroll-wrapper">
 
                     <div class="cert-slide">
-                        
+
                         <div class="timeline-card">
                             <span class="cert-year">2026</span>
                             <div class="edu-logo-compact">
                                 <img src="images/Coursera.png" alt="Coursera Logo">
                             </div>
                             <div class="timeline-content-compact">
-                                <h3>What is Data Science?</h3>
+                                <h3>Python Project for Data Science</h3>
                                 <p><strong>IBM on Coursera</strong></p>
-                                <p>Foundations of Data Science methodology</p>
-                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_datascience-ibm-coursera-activity-7419787154249269248-wNEH?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFd35i4BsEqnQUyueUNhZeB6BzRpQDl1UHw" target="_blank" class="certificate-btn">
+                                <p>Stock data extraction, web scraping & visualization with Python</p>
+                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_python-datascience-ibm-activity-7470369229528010752-nLdb?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFd35i4BsEqnQUyueUNhZeB6BzRpQDl1UHw" target="_blank" class="certificate-btn">
                                     View Certificate →
                                 </a>
                             </div>
@@ -1376,10 +1415,55 @@
                                 <img src="images/Coursera.png" alt="Coursera Logo">
                             </div>
                             <div class="timeline-content-compact">
+                                <h3>Python for Data Science, AI & Development</h3>
+                                <p><strong>IBM on Coursera</strong></p>
+                                <p>Pandas, NumPy, APIs & web scraping with Python</p>
+                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_python-datascience-machinelearning-activity-7456589652687347712-xaeS?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFd35i4BsEqnQUyueUNhZeB6BzRpQDl1UHw" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2026</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/Coursera.png" alt="Coursera Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>Data Science Methodology</h3>
+                                <p><strong>IBM on Coursera</strong></p>
+                                <p>CRISP-DM framework, data storytelling & predictive modeling</p>
+                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_datascience-ibm-coursera-activity-7444785143833083904-RzZM?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFd35i4BsEqnQUyueUNhZeB6BzRpQDl1UHw" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-card">
+                            <span class="cert-year">2026</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/Coursera.png" alt="Coursera Logo">
+                            </div>
+                            <div class="timeline-content-compact">
                                 <h3>Tools for Data Science</h3>
                                 <p><strong>IBM on Coursera</strong></p>
                                 <p>Jupyter, RStudio, GitHub & Watson Studio</p>
                                 <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_datascience-ibm-coursera-activity-7433182527110135809-0wkH?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFd35i4BsEqnQUyueUNhZeB6BzRpQDl1UHw" target="_blank" class="certificate-btn">
+                                    View Certificate →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card">
+                            <span class="cert-year">2026</span>
+                            <div class="edu-logo-compact">
+                                <img src="images/Coursera.png" alt="Coursera Logo">
+                            </div>
+                            <div class="timeline-content-compact">
+                                <h3>What is Data Science?</h3>
+                                <p><strong>IBM on Coursera</strong></p>
+                                <p>Foundations of Data Science methodology</p>
+                                <a href="https://www.linkedin.com/posts/nishaka-mahesh-61255534b_datascience-ibm-coursera-activity-7419787154249269248-wNEH?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFd35i4BsEqnQUyueUNhZeB6BzRpQDl1UHw" target="_blank" class="certificate-btn">
                                     View Certificate →
                                 </a>
                             </div>
